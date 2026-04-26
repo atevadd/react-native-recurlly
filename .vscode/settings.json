@@ -1,7 +1,17 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "source.organizeImports": "explicit",
-    "source.sortMembers": "explicit"
-  }
+    // Disable the built-in CSS validator so it doesn't flag Tailwind v4 at-rules
+    // like @theme, @utility, and @layer as unknown. The Tailwind CSS IntelliSense
+    // extension takes over CSS validation and understands these directives natively.
+    "css.validate": false,
+    "scss.validate": false,
+    // Tell the Tailwind CSS IntelliSense extension to treat .css files
+    // as Tailwind CSS files so it provides proper autocomplete and validation.
+    "tailwindCSS.includeLanguages": {
+        "css": "css"
+    },
+    // Explicitly declare the custom Tailwind v4 at-rules so any remaining
+    // CSS tooling doesn't flag them as unknown.
+    "css.customData": [
+        ".vscode/tailwind-css-data.json"
+    ]
 }
